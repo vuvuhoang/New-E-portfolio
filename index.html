@@ -7,30 +7,39 @@
     <link rel="stylesheet" href="./style.css">
     <title>Vu Vu</title>
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("nK5P70V6rSFVCr5WF");
+    })();
+</script>
 </head>
 <body>
-    <section id="landing-page">
+    <section id="landing-page" onmousemove="moveBackground(event)">
         <nav>
             <figure>
                 <img id="personal-logo" src="./images/logo.png" alt="">
             </figure>
             <ul class="nav__link--list">
-                <li class="nav__link">
+                <li class="nav__link" onclick="toggleModel()">
                     <a href="#" class="nav__link--anchor 
                     link__hover-effect 
                     link__hover-effect--black">About</a>
                 </li>
                 <li class="nav__link">
-                    <a href="#" class="nav__link--anchor 
+                    <a href="#projects" class="nav__link--anchor 
                     link__hover-effect 
                     link__hover-effect--black">Projects</a>
                 </li>
-                <li class="nav__link">
+                <li class="nav__link" onclick="toggleModel()">
                     <a href="#" class="nav__link--anchor 
                     link__hover-effect 
                     link__hover-effect--black">Contact</a>
                 </li>
-                <li class="nav__link click">
+                <li class="nav__link click" onclick="toggleContrast()">
                     <a href="#" class="nav__link--anchor 
                     link__hover-effect 
                     link__hover-effect--black">
@@ -46,7 +55,7 @@
                 <p class="header__para">
                     I'm a <b class="blue">Frontend Software Engineer</b> with a strong passion for building web applications with great user experiences.
                 <br>
-                Here's a bit more <b class="blue">about me</b>.
+                Here's a bit more <b class="blue click" onclick="toggleModel()">about me</b>.
                 </p>
                 <div class="social__list">
                     <a href="linkedin.com/in/vu-vu-694458159" target="_blank" class="social__link click">
@@ -61,10 +70,12 @@
                 </div>
             </div>
         </header>
-        <button class="mail__btn click">
-            <i class="fas fa-envelope"></i>
-        </button>
-        <a href="#project" class="scroll">
+        <a href="#">
+            <button class="mail__btn click" onclick="toggleModel()">
+                <i class="fas fa-envelope"></i>
+            </button>
+        </a>
+        <a href="#projects" class="scroll">
             <div class="scroll__icon click"></div>
         </a>
         <div class="model">
@@ -96,28 +107,47 @@
                 </div>
             </div>
             <div class="model__half model__contact">
+                <i class="fas fa-times model__exit click" onclick="toggleModel()"></i>
                 <h3 class="model__title model__title--contact">
                     Let's have a chat!
                 </h3>
                 <h4 class="model__sub-title model__sub-title--contact">
                     I'm current open to new opportunities.
                 </h4>
-                <form id="contact__form" action="">
+                <form id="contact__form" onsubmit="contact(event)">
                     <div class="form__item">
                         <label class="form__item--label" >Name</label>
-                        <input class="input" name="user_name" type="text" required></input>
+                        <input class="input" name="user_name" type="text"></input>
                     </div>
                     <div class="form__item">
                         <label class="form__item--label" >Email</label>
-                        <input class="input" name="user_email" type="email" required></input>
+                        <input class="input" name="user_email" type="email" ></input>
                     </div>
                     <div class="form__item">
                         <label class="form__item--label" >Message</label>
-                        <textarea class="input" name="message" type="text" required></textarea>
+                        <textarea class="input" name="message" type="text" ></textarea>
                     </div>
+                    <button id="contact__submit" class="form__submit">Send it my way</button>
                 </form>
+                <div class="model__overlay model__overlay--loading">
+                    <div class="loader">
+                        <div class="loader loader__inner"></div>
+                    </div>
+                </div>
+                <div class="model__overlay model__overlay--success">
+                    Thanks for the message! Looking forward to speaking to you soon.
+                </div>
             </div>
         </div>
+        <img src="./images/semi circle.svg" class="shape shape--0">
+        <img src="./images/circle.svg" class="shape shape--1">
+        <img src="./images/squiggly.svg" class="shape shape--2">
+        <img src="./images/circle.svg" class="shape shape--3">
+        <img src="./images/triangle.svg" class="shape shape--4">
+        <img src="./images/circle.svg" class="shape shape--5">
+        <img src="./images/squiggly.svg" class="shape shape--6">
+        <img src="./images/circle.svg" class="shape shape--7">
+        <img src="./images/semi circle.svg" class="shape shape--8">
     </section>
     <section id="projects">
         <div class="container">
@@ -126,6 +156,56 @@
                     Here are some of my <span class="blue">projects</span>
                 </h1>
                 <ul class="project__list">
+                    <li class="project">
+                        <div class="project__wrapper">
+                            <img src="./images/blinker mockup.png" class="project__img" alt="">
+                            <div class="project__wrapper--bg"></div>
+                            <div class="project__description">
+                                <h3 class="project__description--title">
+                                    Car Sales Projects
+                                </h3>
+                                <h4 class="project__description--sub-title">
+                                    Html, CSS, JavaScript
+                                </h4>
+                                <p class="project__description--para">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eius nihil consequatur placeat deserunt consequuntur magni mollitia, at quasi! Iste autem eum sequi voluptates soluta unde dolore, id earum sapiente?
+                                </p>
+                                <div class="project__description--links">
+                                    <a href="#" class="project__description--link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project__description--link">
+                                        <i class="fas fa-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="project">
+                        <div class="project__wrapper">
+                            <img src="./images/blinker mockup.png" class="project__img" alt="">
+                            <div class="project__wrapper--bg"></div>
+                            <div class="project__description">
+                                <h3 class="project__description--title">
+                                    Car Sales Projects
+                                </h3>
+                                <h4 class="project__description--sub-title">
+                                    Html, CSS, JavaScript
+                                </h4>
+                                <p class="project__description--para">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eius nihil consequatur placeat deserunt consequuntur magni mollitia, at quasi! Iste autem eum sequi voluptates soluta unde dolore, id earum sapiente?
+                                </p>
+                                <div class="project__description--links">
+                                    <a href="#" class="project__description--link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project__description--link">
+                                        <i class="fas fa-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                     <li class="project">
                         <div class="project__wrapper">
                             <img src="./images/blinker mockup.png" class="project__img" alt="">
@@ -162,21 +242,21 @@
                 <img src="./images/logo.png" class="footer__logo--img" alt="">
                 </figure>
                 <div class="footer__social--list">
-                    <a href="#" class="
+                    <a href="https://github.com/vuvuhoang" target="_blank" class="
                     footer__social--link
                     link__hover-effect
                     link__hover-effect--white
                     ">
                     Github
                     </a>
-                    <a href="#" class="
+                    <a href="linkedin.com/in/vu-vu-694458159" target="_blank" class="
                     footer__social--link
                     link__hover-effect
                     link__hover-effect--white
                     ">
                     LinkedIn
                     </a>
-                    <a href="#" class="
+                    <a href="#" onclick="toggleModel()" class="
                     footer__social--link
                     link__hover-effect
                     link__hover-effect--white
